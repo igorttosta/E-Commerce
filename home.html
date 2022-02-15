@@ -37,20 +37,212 @@
     <!-- navbar section  inicio -->
         <nav class="navbar">
 
+            <div id="close" class="fas fa-times"></div>
+
             <div class="user">
                 <img src="images/user.png" alt="">
-                <h3>User123</h3>
             </div>
 
             <div class="links">
-                <button><a href="#home">Logar</a></button>
-                <button><a href="#home">Cadastrar</a></button>
+                <button id="login"><a href="#home">Logar</a></button>
+                <button id="sign-in"><a href="#home">Cadastrar</a></button>
             </div>
-
-            <div id="close" class="fas fa-times"></div>
 
         </nav>
     <!-- navbar section  fim -->
+
+    <!-- userIsLogged section  inicio -->
+    <nav class="userIsLogged">
+
+        <div id="exit" class="fas fa-times"></div>
+
+        <div class="user">
+            <img src="images/user.png" alt="">
+            <div>
+                <span>Usuario: </span>
+                <p id="user-name"></p>
+            </div>
+            <div>
+                <span>CPF: </span>
+                <p id="user-cpf"></p>
+                <span>E-mail: </span>
+                <p id="user-email"></p>
+            </div>
+            <script>
+                if (typeof(Storage) !== "undefined") {
+
+                  let user = JSON.parse(localStorage.getItem('user'));
+
+                  document.getElementById('user-name').innerHTML = user.name;
+                  document.getElementById('user-cpf').innerHTML = user.cpf;
+                  document.getElementById('user-email').innerHTML = user.email;
+                }
+            </script>
+        </div>
+
+        <div class="links">
+            <button id="logout"><a href="#home">Sair</a></button>
+        </div>
+
+    </nav>
+    <!-- userIsLogged section  fim -->
+
+    <!-- shopping section  inicio -->
+        <nav class="shopping">
+
+            <div id="closer" class="fas fa-times"></div>
+
+            <div class="user">
+                <div>
+                    <span>Carrinho de: </span>
+                    <p id="user-name-cart"></p>
+                </div>
+                <script>
+                    if (typeof(Storage) !== "undefined") {
+                      let user = JSON.parse(localStorage.getItem('user'));
+
+                      document.getElementById('user-name-cart').innerHTML = user.name;
+                    }
+                </script>
+            </div>
+
+            <div class="shop">
+                <div class="shop-cart">
+                    <span class="span"><b>Nome: </b></span>
+                    <p class="span" id="product-name-cart"></p>
+                    <br>
+                    <span class="span"><b>Preço: </b></span>
+                    <p class="span" id="product-price-cart"></p>
+                    <span>R$</span>
+                    <div id="delete" class="fas fa-times"></div>
+                </div>
+                <script>
+                    if (typeof(Storage) !== "undefined") {
+                      let produto = JSON.parse(localStorage.getItem('Produto'));
+
+                      document.getElementById('product-name-cart').innerHTML = produto.name;
+                      document.getElementById('product-price-cart').innerHTML = produto.price;
+                      document.getElementById('price').innerHTML = produto.price;
+                      document.getElementById('frete').innerHTML = 30;
+                      document.getElementById('total').innerHTML = produto.price + 30;
+                    }
+                </script>
+            </div>
+            <div class="frete">
+                <div class="frete-cart">
+                    <span class="span"><b>SubTotal: </b></span>
+                    <p class="span" id="price"></p>
+                    <span>R$</span>
+                    <br>
+                    <span class="span"><b>Frete: </b></span>
+                    <p class="span" id="frete"></p>
+                    <span>R$</span>
+                    <br>
+                    <span class="span"><b>Total: </b></span>
+                    <p class="span" id="total"></p>
+                    <span>R$</span>
+                </div>
+                <script>
+                    if (typeof(Storage) !== "undefined") {
+                    let produto = JSON.parse(localStorage.getItem('Produto'));
+
+                    document.getElementById('price').innerHTML = produto.price;
+                    document.getElementById('frete').innerHTML = 30;
+                    document.getElementById('total').innerHTML = produto.price + 30;
+                    }
+                </script>
+            </div>
+            <div class="links">
+                <button><a id="address">Comprar</a></button>
+            </div>
+
+        </nav>
+    <!-- shopping section  fim -->
+
+    <!-- address section  inicio -->
+        <nav class="address">
+
+            <div id="exitt" class="fas fa-times"></div>
+
+            <div class="links">
+                <label>CEP: </label>
+                <input placeholder="4499000-000" id="cep" type="text">
+                <label>Estado: </label>
+                <input placeholder="Bahia" id="estado" type="text">
+                <label>Cidade: </label>
+                <input placeholder="Barra do Mendes" id="cidade" type="text">
+                <label>Bairro: </label>
+                <input placeholder="Centro" id="bairro" type="text">
+                <label>Rua: </label>
+                <input placeholder="Rui Barbosa" id="rua" type="text">
+                <label>Numero: </label>
+                <input placeholder="192" id="numero" type="number">
+            </div>
+
+            <div class="links">
+                <button><a onclick="addAddress(
+                    document.getElementById('cep').value,
+                    document.getElementById('estado').value,
+                    document.getElementById('cidade').value,
+                    document.getElementById('bairro').value,
+                    document.getElementById('rua').value,
+                    document.getElementById('numero').value
+                )">Confirmar</a></button>
+            </div>
+
+        </nav>
+    <!-- address section  fim -->
+
+    <!-- sign-in section  inicio -->
+    <nav class="sign-in">
+
+        <div id="closerr" class="fas fa-times"></div>
+
+        <div class="links">
+            <label>Nome: </label>
+            <input placeholder="João da Silva" id="name" type="text">
+            <label>CPF: </label>
+            <input placeholder="000.000.000-00" id="cpf" type="text">
+            <label>E-mail: </label>
+            <input placeholder="none@gmail.com" id="email" type="email">
+            <label>Senha: </label>
+            <input placeholder="**********" id="password" type="password">
+        </div>
+
+        <div class="links">
+            <button><a onclick="addUser(
+                document.getElementById('name').value,
+                document.getElementById('cpf').value,
+                document.getElementById('email').value,
+                document.getElementById('password').value
+            )">Cadastrar</a></button>
+        </div>
+
+    </nav>
+    <!-- sign-in section  fim -->
+
+    <!-- sign-in section  inicio -->
+    <nav class="login">
+
+        <div id="closerrr" class="fas fa-times"></div>
+
+        <div class="links">
+            <label>E-mail: </label>
+            <input placeholder="none@gmail.com" id="email2" type="email">
+            <label>Senha: </label>
+            <input placeholder="**********" id="password2" type="password">
+        </div>
+
+        <div class="links">
+            <button><a onclick="auth(
+                document.getElementById('email2').value,
+                document.getElementById('password2').value
+            )">Logar</a></button>
+        </div>
+
+    </nav>
+    <!-- sign-in section  fim -->
+
     <!-- products section inicio  -->
     <section class="products" id="products">
 
@@ -76,8 +268,8 @@
                                 <span>( 1342 reviews )</span>
                             </div>
                             <h3>Placa De Vídeo Gigabyte Geforce RTX 2060 D6 6GB GDDR6 192bit</h3>
-                            <div class="price">$4111.99 <span>$4899.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <div class="price">R$4111.99 <span>R$4899.99</span></div>
+                            <a href="#" class="btn" onclick="addToCart('Placa De Vídeo Gigabyte Geforce RTX 2060 D6 6GB GDDR6 192bit', 4111.99, 'images/p-1.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -99,8 +291,8 @@
                                 <span>( 557 reviews )</span>
                             </div>
                             <h3>Memória Corsair Vengeance RGB Pro 16GB (2x8GB) 3200MHz DDR4 C16 TUF Black - CMW16GX4M2C3200C16-TUF</h3>
-                            <div class="price">$719.99 <span>$819.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <div class="price">R$719.99 <span>R$819.99</span></div>
+                            <a href="#" class="btn" onclick="addToCart('Memória Corsair Vengeance RGB Pro 16GB (2x8GB) 3200MHz DDR4 C16 TUF Black - CMW16GX4M2C3200C16-TUF', 719.99, 'images/p-2.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -122,8 +314,8 @@
                                 <span>( 600 reviews )</span>
                             </div>
                             <h3>Gabinete Gamer NOX Infinity Omega, ARGB, 1 Cooler, Lateral em Acrílico - NXINFINTYOMEGA</h3>
-                            <div class="price">$359.99 <span>$479.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <div class="price">R$359.99 <span>R$479.99</span></div>
+                            <a href="#" class="btn" onclick="addToCart('Gabinete Gamer NOX Infinity Omega, ARGB, 1 Cooler, Lateral em Acrílico - NXINFINTYOMEGA', 359.99, 'images/p-3.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -146,7 +338,7 @@
                             </div>
                             <h3>Cadeira Gamer Husky Gaming Tempest 500, Preto e Azul, Com Almofadas, Descanso Para Pernas Retrátil, Reclinável - HGMA081</h3>
                             <div class="price">R$1299.99 <span>R$1359.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <a href="#" class="btn" onclick="addToCart('Cadeira Gamer Husky Gaming Tempest 500, Preto e Azul, Com Almofadas, Descanso Para Pernas Retrátil, Reclinável - HGMA081', 1299.99, 'images/p-4.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -168,8 +360,8 @@
                                 <span>( 446 reviews )</span>
                             </div>
                             <h3>Teclado Mecânico Gamer T-Dagger Bora, RGB, Switch Outemu Blue, ABNT2 - T-TGK315-BLUE</h3>
-                            <div class="price">$199.99 <span>$259.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <div class="price">R$199.99 <span>R$259.99</span></div>
+                            <a href="#" class="btn" onclick="addToCart('Teclado Mecânico Gamer T-Dagger Bora, RGB, Switch Outemu Blue, ABNT2 - T-TGK315-BLUE', 199.99, 'images/p-5.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -198,8 +390,8 @@
                                 <span>( 121 reviews )</span>
                             </div>
                             <h3>Fonte Corsair CV450, 450W, 80 Plus Bronze - CP-9020209-BR</h3>
-                            <div class="price">$249.99 <span>$359.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <div class="price">R$249.99 <span>R$359.99</span></div>
+                            <a href="#" class="btn" onclick="addToCart('Teclado Mecânico Gamer T-Dagger Bora, RGB, Switch Outemu Blue, ABNT2 - T-TGK315-BLUE', 249.99, 'images/p-6.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -221,8 +413,8 @@
                                 <span>( 120 reviews )</span>
                             </div>
                             <h3>Headset Gamer Razer Kraken X Lite, Surround 7.1, Drivers 40mm, P2 - RZ04-02950100-R381</h3>
-                            <div class="price">$199.99 <span>$239.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <div class="price">R$199.99 <span>R$239.99</span></div>
+                            <a href="#" class="btn" onclick="addToCart('Headset Gamer Razer Kraken X Lite, Surround 7.1, Drivers 40mm, P2 - RZ04-02950100-R381', 199.99, 'images/p-7.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -245,7 +437,7 @@
                             </div>
                             <h3>Processador Intel Core i7-10700K, Cache 16MB, 3.8GHz (5.1GHz Max Turbo), LGA 1200 - BX8070110700K</h3>
                             <div class="price">R$2799.99 <span>R$2999.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <a href="#" class="btn" onclick="addToCart('Processador Intel Core i7-10700K, Cache 16MB, 3.8GHz (5.1GHz Max Turbo), LGA 1200 - BX8070110700K', 2799.99, 'images/p-8.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -266,9 +458,9 @@
                                 <i class="far fa-star"></i>
                                 <span>( 337 reviews )</span>
                             </div>
-                            <h3>Processador Intel Core i5-10600KF, Cache 12MB, 4.1GHz, LGA 1200 - BX8070110600KF/h3>
+                            <h3>Processador Intel Core i5-10600KF, Cache 12MB, 4.1GHz, LGA 1200 - BX8070110600KF</h3>
                             <div class="price">R$1429.99 <span>R$1899.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <a href="#" class="btn" onclick="addToCart('Processador Intel Core i5-10600KF, Cache 12MB, 4.1GHz, LGA 1200 - BX8070110600KF', 1429.99, 'images/p-9.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -291,7 +483,7 @@
                             </div>
                             <h3>Cadeira Gamer Husky Gaming Tempest 500, Preto e Vermelho, Com Almofadas, Descanso Para Pernas Retrátil, Reclinável - HGMA079</h3>
                             <div class="price">R$1599.99 <span>R$1699.99</span></div>
-                            <a href="#" class="btn">add to cart</a>
+                            <a href="#" class="btn" onclick="addToCart('Cadeira Gamer Husky Gaming Tempest 500, Preto e Vermelho, Com Almofadas, Descanso Para Pernas Retrátil, Reclinável - HGMA079', 1599.99, 'images/p-10.png')">add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -335,7 +527,7 @@
                         rotação alternada, 7 tubos de calor de cobre composto, uma grande placa de cobre que toca diretamente a GPU,
                         ventiladores ativos 3D e resfriamento de tela, que juntos fornecem dissipação de calor de alta eficiência.
                     </p>
-                    <div class="price">$16599.99 <span>R$17599.99</span></div>
+                    <div class="price">R$16599.99 <span>R$17599.99</span></div>
                     <a href="#" class="btn">add to cart</a>
                 </div>
             </div>
