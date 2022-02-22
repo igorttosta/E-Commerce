@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="./images/tecnologia.png">
         <title>TechShop</title>
 
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -115,6 +116,8 @@
                     <p class="span" id="product-price-cart"></p>
                     <span>R$</span>
                     <div id="delete" class="fas fa-times"></div>
+                    <span class="span">Quantidade: </span>
+                    <input class="input" id="quantidade" type="number" min="1" value="1">
                 </div>
                 <script>
                     if (typeof(Storage) !== "undefined") {
@@ -125,6 +128,7 @@
                       document.getElementById('price').innerHTML = produto.price;
                       document.getElementById('frete').innerHTML = 30;
                       document.getElementById('total').innerHTML = produto.price + 30;
+
                     }
                 </script>
             </div>
@@ -164,6 +168,10 @@
 
             <div id="exitt" class="fas fa-times"></div>
 
+            <div class="links-head">
+                <span>Endereço/Pagamento</span>
+            </div>
+
             <div class="links">
                 <label>CEP: </label>
                 <input placeholder="4499000-000" id="cep" type="text">
@@ -177,9 +185,12 @@
                 <input placeholder="Rui Barbosa" id="rua" type="text">
                 <label>Numero: </label>
                 <input placeholder="192" id="numero" type="number">
+                <label>Pagamento: </label>
+                <input type="radio" id="pagamento"/>Pix
+                <input type="radio" id="pagamento"/>Boleto
             </div>
 
-            <div class="links">
+            <div class="links-button">
                 <button><a onclick="addAddress(
                     document.getElementById('cep').value,
                     document.getElementById('estado').value,
@@ -197,6 +208,10 @@
     <nav class="sign-in">
 
         <div id="closerr" class="fas fa-times"></div>
+
+        <div class="links-head">
+            <span>Tela de Cadastro</span>
+        </div>
 
         <div class="links">
             <label>Nome: </label>
@@ -226,6 +241,10 @@
 
         <div id="closerrr" class="fas fa-times"></div>
 
+        <div class="links-head">
+            <span>Tela de Login</span>
+        </div>
+
         <div class="links">
             <label>E-mail: </label>
             <input placeholder="none@gmail.com" id="email2" type="email">
@@ -252,9 +271,6 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-1.png" alt="">
                         </div>
@@ -275,9 +291,6 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-2.png" alt="">
                         </div>
@@ -298,9 +311,6 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-3.png" alt="">
                         </div>
@@ -321,9 +331,6 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-4.png" alt="">
                         </div>
@@ -344,9 +351,6 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-5.png" alt="">
                         </div>
@@ -374,9 +378,6 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-6.png" alt="">
                         </div>
@@ -397,9 +398,6 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-7.png" alt="">
                         </div>
@@ -420,9 +418,6 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-8.png" alt="">
                         </div>
@@ -443,9 +438,6 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-9.png" alt="">
                         </div>
@@ -466,9 +458,6 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="slide">
-                        <div class="icons">
-                            <a href="#" class="fas fa-eye"></a>
-                        </div>
                         <div class="image">
                             <img src="images/p-10.png" alt="">
                         </div>
@@ -624,8 +613,6 @@
             </div>
 
         </div>
-
-        <div class="credit"> Criado por <span> Igor Tosta </span> | <small> &copy; Copyright </small> </div>
 
     </div>
 

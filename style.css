@@ -343,6 +343,7 @@ header.active{
     top:0; left: -120%;
     z-index: 1000;
     height: 100%;
+    width: 40%;
     background: var(--white-color);
     padding:3rem;
     width: 30rem;
@@ -380,7 +381,7 @@ header.active{
 .shopping .shop {
     border: 1px solid var(--black-color);
     padding: 2rem;
-    border-radius: 2rem;
+    overflow: scroll;
 }
 
 .shopping .shop .shop-cart {
@@ -388,9 +389,16 @@ header.active{
     font-weight: 500;
     font-size: 1.4rem;
     border-bottom: 1px solid var(--black-color);
-    padding: 1rem;
+    padding: 0.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.shopping .shop .shop-cart input {
+    border: 1px solid var(--black-color);
+    height: 2rem;
+    width: 4rem;
+    text-align: center;
 }
 
 .shopping .shop .shop-cart .span {
@@ -482,6 +490,26 @@ header.active{
     box-shadow: 0 0 0 100vw var(--light-color);
 }
 
+.address .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 70%;
+
+    overflow: scroll;
+    border: 0.1rem solid var(--black-color);
+}
+
+.address .links-head {
+    width: 20rem;
+    height: 4rem;
+    text-align: center;
+    color:var(--black-color);
+    font-size: 1.8rem;
+    margin: 2rem;
+}
+
 .address .links label {
     color:var(--black-color);
     font-size: 1.4rem;
@@ -499,12 +527,7 @@ header.active{
     padding: .9rem 1.5rem;
 }
 
-.address .links {
-    display: flex;
-    flex-direction: column;
-}
-
-.address .links button {
+.address .links-button button {
     width: 20rem;
     height: 5rem;
     margin-top: 2rem;
@@ -562,7 +585,16 @@ header.active{
 .sign-in .links {
     display: flex;
     flex-direction: column;
-    margin-top: 8rem;
+    margin-top: 3rem;
+}
+
+.sign-in .links-head {
+    width: 20rem;
+    height: 4rem;
+    text-align: center;
+    color:var(--black-color);
+    font-size: 1.8rem;
+    margin-top: 2rem;
 }
 
 .sign-in .links label {
@@ -639,7 +671,16 @@ header.active{
 .login .links {
     display: flex;
     flex-direction: column;
-    margin-top: 12rem;
+    margin-top: 8rem;
+}
+
+.login .links-head {
+    width: 20rem;
+    height: 4rem;
+    text-align: center;
+    color:var(--black-color);
+    font-size: 1.8rem;
+    margin-top: 4rem;
 }
 
 .login .links label {
@@ -721,31 +762,8 @@ header.active{
     border-top: .1rem solid var(--light-color);
 }
 
-.products .product-slider .slide .icons{
-    position: absolute;
-    top:0; right:-7rem;
-}
-
 .products .product-slider .slide:hover .icons{
     right:1rem;
-}
-
-.products .product-slider .slide .icons a{
-    height:4rem;
-    width:4rem;
-    line-height: 4rem;
-    text-align: center;
-    font-size: 1.8rem;
-    border-radius: 50%;
-    background: var(--black-color);
-    color:var(--white-color);
-    display: block;
-    margin-top: 1rem;
-}
-
-.products .product-slider .slide .icons a:hover{
-    background:var(--orange);
-    color:#fff;
 }
 
 .products .product-slider .slide .content .stars i{
@@ -923,11 +941,6 @@ header.active{
     color:var(--black-color);
     text-align: center;
 }
-
-.footer .footer-container .credit span{
-    color:var(--orange);
-}
-
 
 /* media queries  */
 

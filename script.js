@@ -85,6 +85,7 @@ document.querySelector('#exitt').onclick = () =>{
 
 document.querySelector('#logout').onclick = () =>{
     localStorage.removeItem('user');
+    localStorage.removeItem('Produto');
     userIsLogged.classList.remove('active');
     window.location.reload();
 }
@@ -140,7 +141,7 @@ var swiper = new Swiper(".product-slider", {
     loop:true,
     spaceBetween: 10,
     autoplay: {
-        delay: 4000,
+        delay: 2500,
         disableOnInteraction: false,
     },
     navigation: {
