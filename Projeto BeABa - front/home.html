@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="./images/tecnologia.png">
+        <title>TechShop</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+        <!-- Link de fontes do cdn CSS  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+    <!-- header section inicio  -->
+        <header>
+
+            <a href="#" class="logo">Tech<span>SHOP</span></a>
+
+            <form action="">
+                <input type="search" id="search-bar">
+                <label for="search-bar" class="fas fa-search"></label>
+            </form>
+
+            <div class="icons">
+                <div id="theme-toggler" class="fas fa-moon"></div>
+                <a id="shopping-cart" class="fas fa-shopping-cart"></a>
+                <a id="menu-bar" class="fas fa-user"></a>
+            </div>
+
+        </header>
+    <!-- header section fim -->
+        <div class="filter">
+           <ul>
+                <li onclick="filtro(0)">Todos</li>
+                <li onclick="filtro(1)">Hardware</li>
+                <li onclick="filtro(2)">Periféricos</li>
+                <li onclick="filtro(3)">Cadeiras</li>
+            </ul>
+        </div>
+
+    <!-- navbar section  inicio -->
+        <nav class="navbar">
+
+            <div id="close" class="fas fa-times"></div>
+
+            <div class="user">
+                <img src="images/user.png" alt="">
+            </div>
+
+            <div class="links">
+                <button id="login"><a href="#home">Logar</a></button>
+                <button id="sign-in"><a href="#home">Cadastrar</a></button>
+            </div>
+
+        </nav>
+    <!-- navbar section  fim -->
+
+    <!-- userIsLogged section  inicio -->
+    <nav class="userIsLogged">
+
+        <div id="exit" class="fas fa-times"></div>
+
+        <div class="user">
+            <img src="images/user.png" alt="">
+            <div>
+                <button id="info">Informações</button>
+            </div>
+            <div>
+               <button id="req">Pedidos</button>
+            </div>
+        </div>
+
+    </nav>
+    <!-- userIsLogged section  fim -->
+
+    <!-- Information section  inicio -->
+    <nav class="information">
+
+        <div id="sair" class="fas fa-times"></div>
+
+        <div class="user">
+            <img src="images/user.png" alt="">
+            <div>
+                <span>Usuario: </span>
+                <p id="user-name"></p>
+            </div>
+            <div>
+                <span>CPF: </span>
+                <p id="user-cpf"></p>
+                <span>E-mail: </span>
+                <p id="user-email"></p>
+            </div>
+        </div>
+
+        <div class="links">
+            <button id="logout"><a href="#home">Sair</a></button>
+        </div>
+
+    </nav>
+    <!-- Information section  fim -->
+
+    <!-- requests section  inicio -->
+    <nav class="requests">
+
+        <div id="sairr" class="fas fa-times"></div>
+
+        <div class="user">
+            <img src="images/user.png" alt="">
+        </div>
+        <div class="shop" id="request-item"></div>
+
+    </nav>
+    <!-- requests section  fim -->
+
+    <!-- shopping section  inicio -->
+        <nav class="shopping">
+
+            <div id="closer" class="fas fa-times"></div>
+
+            <div class="shop" id="shop-container"></div>
+            <div class="frete">
+                <div class="frete-cart" id="frete-cart">
+                    <span class="span" id="subtotal"></span>
+                    <br>
+                    <span class="span" id="frete"></span>
+                    <br>
+                    <span class="span" id="total"></span>
+                </div>
+            </div>
+            <div class="links">
+                <button><a id="address">Comprar</a></button>
+                    <form action="http://localhost:5000/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" accept=".csv" name="meucsv" id="meucsv">
+                        <input type="submit" value="Buscar produtos da lista">
+                    </form>
+            </div>
+
+        </nav>
+    <!-- shopping section  fim -->
+
+    <!-- shopping section  inicio -->
+    <nav class="product-item">
+        <div id="back" class="fas fa-times"></div>
+        <div id="product-item">
+
+        </div>
+
+    </nav>
+<!-- shopping section  fim -->
+
+    <!-- address section  inicio -->
+        <nav class="address">
+
+            <div id="exitt" class="fas fa-times"></div>
+            <div class="content">
+                <div class="links-head">
+                    <span>Endereço/Pagamento</span>
+                </div>
+
+                <div class="pagamento" id="pagamento">
+
+                </div>
+
+                <div class="links">
+                    <label>Pagamento: </label>
+                    <br>
+                    <input type="radio" id="tipo_pagamento"/>Pix
+                    <br>
+                    <input type="radio" id="tipo_pagamento"/>Boleto
+                    <br>
+                    <input type="radio" id="tipo_pagamento"/>Cartão de Crédito
+                </div>
+
+                <div class="links-button">
+                    <button onclick="deleteAll()"><a>Confirmar</a></button>
+                </div>
+            </div>
+        </nav>
+    <!-- address section  fim -->
+
+    <!-- sign-in section  inicio -->
+    <nav class="sign-in">
+
+        <div id="closerr" class="fas fa-times"></div>
+
+        <div class="links-head">
+            <span>Cadastro</span>
+        </div>
+
+        <div class="links">
+            <span>Dados do Usuário</span>
+            <label>Nome*: </label>
+            <input placeholder="João da Silva" id="name" type="text" required maxlength="45" minlength="2">
+            <label>CPF*: </label>
+            <input placeholder="000.000.000-00" id="cpf" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required maxlength="14" minlength="11">
+            <label>E-mail*: </label>
+            <input placeholder="none@gmail.com" id="email" type="email" required maxlength="30">
+            <label>Senha*: </label>
+            <input placeholder="**********" id="password" type="password" required maxlength="20" minlength="8">
+        </div>
+        <div class="links">
+            <span>Endereço do Usuário</span>
+            <label>CEP*: </label>
+            <input placeholder="44990-000" id="cep" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required maxlength="9" minlength="8">
+            <label>Estado*: </label>
+            <input placeholder="Bahia" id="estado" type="text" required maxlength="20" minlength="2">
+            <label>Cidade*: </label>
+            <input placeholder="Barra do Mendes" id="cidade" type="text" required>
+            <label>Bairro*: </label>
+            <input placeholder="Centro" id="bairro" type="text"required>
+            <label>Rua*: </label>
+            <input placeholder="Rui Barbosa" id="rua" type="text" required>
+            <label>Numero*: </label>
+            <input placeholder="192" id="numero" type="number">
+        </div>
+
+        <div class="links-button">
+            <button><a onclick="addUser(
+                document.getElementById('name').value,
+                document.getElementById('cpf').value,
+                document.getElementById('email').value,
+                document.getElementById('password').value,
+                document.getElementById('cep').value,
+                document.getElementById('estado').value,
+                document.getElementById('cidade').value,
+                document.getElementById('bairro').value,
+                document.getElementById('rua').value,
+                document.getElementById('numero').value
+            )">Cadastrar</a></button>
+        </div>
+
+    </nav>
+    <!-- sign-in section  fim -->
+
+    <!-- login section  inicio -->
+    <nav class="login">
+
+        <div id="closerrr" class="fas fa-times"></div>
+
+        <div class="links-head">
+            <span>Tela de Login</span>
+        </div>
+
+        <div class="links">
+            <label>E-mail: </label>
+            <input placeholder="none@gmail.com" id="email2" type="email">
+            <label>Senha: </label>
+            <input placeholder="**********" id="password2" type="password">
+        </div>
+
+        <div class="links">
+            <button><a onclick="auth(
+                document.getElementById('email2').value,
+                document.getElementById('password2').value
+            )">Logar</a></button>
+        </div>
+
+    </nav>
+    <!-- login section  fim -->
+
+    <!-- products section inicio  -->
+    <section class="products" id="products">
+        <h1 class="heading"> Produtos <span>Recentes</span> </h1>
+        <div class="swiper-container product-slider gap">
+            <div class="swiper-wrapper" id="teste">
+            </div>
+        </div>
+
+        <div class="swiper-container product-slider">
+            <div class="swiper-wrapper" id="teste">
+            </div>
+        </div>
+
+    </section>
+    <!-- Seção de Produto fim -->
+    <!-- Seção Destaque inicio -->
+    <!-- <section class="featured" id="featured">
+
+        <h1 class="heading">Produtos em <span>Destaque</span></h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image-container">
+                    <div class="small-image">
+                        <img src="images/f-1-1.png" class="small-image-1" alt="">
+                        <img src="images/f-1-2.png" class="small-image-1" alt="">
+                        <img src="images/f-1-3.png" class="small-image-1" alt="">
+                    </div>
+                    <div class="big-image">
+                        <img src="images/f-1-1.png" class="big-image-1" alt="">
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Placa De Video Gigabyte Geforce Rtx 3080 Ti Eagle 12g - Gddr6x - 2x Hdmi/3x Displayport com LHR</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>( 12100 reviews )</span>
+                    </div>
+                    <p>Placa de Vídeo Gigabyte NVIDIA GeForce RTX 3080 Ti Eeagle Sistema de resfriamento WINDFORCE 3X
+                        O sistema de resfriamento WINDFORCE 3X possui dois ventiladores de lâmina exclusivos de 90 mm e um de 80 mm,
+                        rotação alternada, 7 tubos de calor de cobre composto, uma grande placa de cobre que toca diretamente a GPU,
+                        ventiladores ativos 3D e resfriamento de tela, que juntos fornecem dissipação de calor de alta eficiência.
+                    </p>
+                    <div class="price">R$16599.99 <span>R$17599.99</span></div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image-container">
+                    <div class="small-image">
+                        <img src="images/f-2-1.png" class="small-image-2" alt="">
+                        <img src="images/f-2-2.png" class="small-image-2" alt="">
+                        <img src="images/f-2-3.png" class="small-image-2" alt="">
+                    </div>
+                    <div class="big-image">
+                        <img src="images/f-2-1.png" class="big-image-2" alt="">
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Placa De Vídeo Gigabyte Geforce RTX 2060 D6 6GB GDDR6 192bit</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>( 590 reviews )</span>
+                    </div>
+                    <p>Marca: Gigabyte - Modelo: GVN2060D66GD 20 Recursos - Powered by GeForce RTX™ 2060 -
+                        Integrado com interface de memória GDDR6 de 6 GB de 192 bits - Sistema de resfriamento WINDFORCE
+                        2X com ventiladores giratórios alternativos Ventiladores de - Lâmina exclusivos de 90 mm -
+                        Back plate de proteção Especificações Chipset GeForce RTX™ 2060 Core Clock 1680 MHz RTX-OPS 36 CUDA®
+                        Cores 1920 Memory Clock 14000 MHz Tamanho da memória 6 GB Tipo de memória GDDR6 Memory Bus 192 bit
+                        Banda de memória (GB/sec) 336 GB/s Card Bus PCI-E 3.0 x 16 Resolução digital max. 7680x4320 Multi-view 4
+                        Tamanho da placa Comprimento= 225.65 Largura= 122.02 Altura= 40.5 mm PCB Form ATX DirectX 12 OpenGL 4.6
+                        Fonte requerida 500W Conectores de energia 8 Pin*1 Saída DisplayPort 1.4 *3 HDMI 2.0b *1 SLI support
+                        No Accessórios 1. Quick guide 2. Driver CD
+                    </p>
+                    <div class="price">R$4111.99 <span>R$4899.99</span></div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image-container">
+                    <div class="small-image">
+                        <img src="images/f-3-1.png" class="small-image-3" alt="">
+                        <img src="images/f-3-2.png" class="small-image-3" alt="">
+                        <img src="images/f-3-3.png" class="small-image-3" alt="">
+                    </div>
+                    <div class="big-image">
+                        <img src="images/f-3-1.png" class="big-image-3" alt="">
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Placa de Vídeo Gigabyte NVIDIA GeForce RTX 3080 Ti Gaming, RGB, 12GB GDDR6X, 19000MHz, DLSS, Ray Tracing - GV-N308TGAMING OC-12GD</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>( 1440 reviews )</span>
+                    </div>
+                    <p>Placa de Vídeo Gigabyte NVIDIA GeForce RTX 3080 Ti Gaming Sistema de resfriamento WINDFORCE 3X
+                        O sistema de resfriamento WINDFORCE 3X possui dois ventiladores de lâmina exclusivos de 90 mm e um de 80 mm,
+                        rotação alternada, 7 tubos de calor de cobre composto, uma grande placa de cobre que toca diretamente a GPU,
+                        ventiladores ativos 3D e resfriamento de tela, que juntos fornecem dissipação de calor de alta eficiência.
+                        A GIGABYTE gira os ventiladores adjacentes na direção oposta, de forma que a direção do fluxo de ar entre os dois ventiladores seja a mesma,
+                        reduzindo a turbulência e aumentando a pressão do fluxo de ar. O 3D Active Fan fornece resfriamento semipassivo, e
+                        os ventiladores permanecerão desligados quando a GPU estiver em um jogo de baixa carga ou baixo consumo de energia.
+                    </p>
+                    <div class="price">R$13599.99 <span>R$14159.99</span></div>
+                    <a href="#" class="btn">add to cart</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section> -->
+
+    <!-- Seção Destaque fim -->
+    <!-- footer section inicio  -->
+
+    <section class="footer">
+
+    <div class="footer-container">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Entre em contato conosco: </h3>
+                <a href="#">+55 (74) 9 9144-9651</a>
+                <a href="#">matositosta@gmail.com</a>
+                <a href="#">Barra do Mendes - BA</a>
+                <img src="images/payment.png" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+    </section>
+
+    <!-- footer section fim -->
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- import do js -->
+    <script src="script.js"></script>
+
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script type="text/javascript">
+        function filtro(id_category = 0) {
+            axios.get(`http://localhost:5000/products/${id_category}`)
+                .then(response => {
+                    document.querySelector('#teste').innerHTML =  response.data.map((item, index) => `
+                        <div class="swiper-slide">
+                            <div class="slide">
+                                <div class="image">
+                                    <img src="images/${item.image}" id="image-${index+1}" alt="">
+                                </div>
+                                <div class="content">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span id="reviews-${index+1}"> ${item.review_qtt} Reviews</span>
+                                    </div>
+                                    <h3 id="name-${index+1}">${item.name}</h3>
+                                    <div class="price" id="price-${index+1}">R$ ${item.price} <span> R$ ${item.discount}</span></div>
+                                    <a href="#" class="btn" onclick="addToCart(${item.id})">Add Item</a>
+                                    <a class="btn" onclick="openModal(${item.id})">Detalhes</a>
+                                </div>
+                            </div>
+                        </div>
+                    `)
+                })
+                .catch(error => console.log(error))
+        }
+
+        filtro() //calling when the page render
+
+    let productItem = document.querySelector('.product-item')
+
+    function openModal(id){
+    document.getElementById(`btn-${id}`);
+    productItem.classList.toggle('active');
+    shopping.classList.remove('active');
+    userIsLogged.classList.remove('active');
+    requests.classList.remove('active');
+    information.classList.remove('active');
+
+    axios.get(`http://localhost:5000/product/${id}`)
+    .then(response => {
+        document.querySelector('#product-item').innerHTML = `
+            <div class="product">
+                <div class="image">
+                    <img src="images/${response.data.image}" alt="">
+                </div>
+                <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>${response.data.review_qtt} Reviews</span>
+                    </div>
+                <div class="text">
+                    <h1>${response.data.name}</h1>
+                    <h2>Valor: R$${response.data.price} <span>  R$${response.data.discount}</span></h2>
+                    <div class="description">
+                    <h1>Descrição: <br>${response.data.description}</h1>
+                    </div>
+                    <div class="price" ${response.data.price}> <span> </span></div>
+                </div>
+                <div class="button">
+                    <a href="#" class="btn" onclick="addToCart(${response.data.id})">Add Item</a>
+                </div>
+            </div>
+        `
+    })
+    .catch(error => console.log(error))
+}
+
+    user = JSON.parse(localStorage.getItem('user'));
+    let id_user = user.id;
+    axios.get(`http://localhost:5000/shopping_cart/${id_user}`)
+    .then(response => {
+        document.querySelector('#shop-container').innerHTML =  response.data.map((item, index) => `
+            <div class="shop-cart">
+                <div class="product-cart">
+                    <div class="image">
+                        <img src="images/${item.image}" id="image-${index+1}" alt="">
+                    </div>
+                    <div class="text">
+                        <p class="span" id="product-name-cart">${item.name}</p>
+                        <br>
+                        <br>
+                        <p class="span" id="product-price-cart">Valor: ${item.price}R$</p>
+                        <p id="delete" class="fas fa-times" onclick="deleteCartItem(${item.id})"></p>
+                    </div>
+                </div>
+            </div>
+            `)
+            let valor = 0
+            let frete = 30
+            for(let i = 0; i < response.data.length; i++) {
+                valor += response.data[i].price;
+            }
+        let total = valor + frete
+        document.getElementById('subtotal').innerHTML = `SubTotal: ${valor}R$`;
+        document.getElementById('frete').innerHTML = `Frete: ${frete}R$`;
+        document.getElementById('total').innerHTML = `Total: ${total}R$`;
+
+        let total_price = document.getElementById('total').value
+        console.log(total_price)
+    })
+    .catch(error => console.log(error))
+
+    let address_user = user.fk_address_id;
+    axios.get(`http://localhost:5000/address/${address_user}`)
+        .then(response => {
+            document.querySelector('#pagamento').innerHTML = `
+                <div class="text">
+                    <h2>Cep: ${response.data.cep}</h2>
+                    <h2>Estado: ${response.data.estado}</h2>
+                    <h2>Cidade: ${response.data.cidade}</h2>
+                    <h2>Bairro: ${response.data.bairro}</h2>
+                    <h2>Rua: ${response.data.rua} N°${response.data.numero}</h2>
+                </div>
+            `
+        })
+        .catch(error => console.log(error))
+
+    user = JSON.parse(localStorage.getItem('user'));
+    document.getElementById('user-name').innerHTML = user.name;
+    document.getElementById('user-cpf').innerHTML = user.cpf;
+    document.getElementById('user-email').innerHTML = user.email;
+
+    axios.get(`http://localhost:5000/request/${id_user}`)
+    .then(response => {
+        document.querySelector('#request-item').innerHTML =  response.data.map((item) => `
+            <div class="show-request">
+                <h2>Pedido de número ${item.id} realizado: ${item.bought_at} no valor de ${item.total_price}R$</h2>
+            </div>
+            `)
+    })
+    .catch(error => console.log(error))
+    </script>
+</html>
