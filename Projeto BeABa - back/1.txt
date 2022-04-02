@@ -1,0 +1,81 @@
+import pandas as pd
+import sys
+fileName = sys.argv[1]
+
+base = pd.read_csv(
+    r'C:/Users/980112/Desktop/ProjetoFinal/backEnd/uploads/{}'.format(fileName), encoding='latin-1', sep=';', decimal=',')
+print(base.values.tolist())
+
+
+const { spawn } = require('child_process')
+
+let fs = require('fs')
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
+app.post('/teste', upload.single('meucsv'), (req, res) => {
+    const filename = req.file.filename;
+    fs.readFile(`./uploads/${filename}`, { encoding: 'utf-8' }, (error, csv) => {
+        if (error) {
+            console.log(error);
+            res.send('ocorreu um erro')
+        } else {
+            let produtosCSV = ''
+            const childPython = spawn('python', ['./pai/prototipo.py', filename])
+            childPython.stdout.on("data", (data) => {
+                produtosCSV += data
+                console.log((data), 'data')
+            });
+
+            childPython.stdout.on("end", () => {
+                let teste = produtosCSV
+                formatarCsv(teste)
+                res.render('sucesso3')
+            })
+        }
+    })
+})
+
+
+
+async function formatarCsv(oJson) {
+    let arrayfinal = []
+    console.log(oJson, 'sou o ojson')
+    oJson = oJson.replace('[[', "")
+    while (oJson.includes('], [')) {
+        oJson = oJson.replace('], [', 'f')
+    }
+    oJson = oJson.replace(']]', "f")
+    oJson = oJson.replace(/\n/gm, '')
+    oJson = oJson.replace(/\r/gm, '')
+    console.log(oJson, 'ojson parte 2')
+    let arrayAuxiliar = []
+    oJson = oJson.split('f')
+    oJson.pop()
+    console.log(oJson, 'ojson parte 3')
+
+    for (let i = 0; i < oJson.length; i++) {
+        arrayAuxiliar.push(oJson[i].split(', '))
+    }
+    console.log((arrayAuxiliar), 'ojson parte 4')
+
+    for (let i = 0; i < arrayAuxiliar.length; i++) {
+        arrayfinal.push([parseInt(arrayAuxiliar[i][0]), parseInt(arrayAuxiliar[i][1])])
+    }
+    console.log(arrayfinal, 'sou o array final')
+    let x
+    for (let j = 0; j < produtos.length; j++) {
+        for (let i = 0; i < arrayfinal.length; i++) {
+            if (arrayfinal[i][0] == produtos[j].idproduto) {
+                console.log(produtos[j].nomeproduto)
+                x = 0
+                while (x != arrayfinal[i][1] && x < 100) {
+                    await addToCart(arrayfinal[i][0])
+                    x++
+                }
+
+            }
+        }
+    }
+    console.log('terminou a execução')
+
+}
