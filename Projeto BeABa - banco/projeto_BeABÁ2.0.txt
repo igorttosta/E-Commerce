@@ -1,0 +1,74 @@
+CREATE TABLE client (
+    "name" VARCHAR(100),
+    email VARCHAR(100),
+    "id" SERIAL PRIMARY KEY,
+    password VARCHAR(20),
+    cpf VARCHAR(14),
+    created_at TIMESTAMP,
+    fk_address_id INTEGER
+);
+
+CREATE TABLE product (
+    "id" SERIAL PRIMARY KEY,
+    price FLOAT,
+    review FLOAT,
+    "name" VARCHAR(100),
+    description VARCHAR(1000),
+    image VARCHAR(100),
+    review_qtt INTEGER,
+    discount INTEGER,
+    fk_category_id INTEGER
+);
+
+CREATE TABLE category (
+    "name" VARCHAR(100),
+   "id" SERIAL PRIMARY KEY
+);
+
+CREATE TABLE shopping_cart (
+    "id" SERIAL PRIMARY KEY,
+    fk_client_id INTEGER,
+    fk_product_id INTEGER
+);
+
+CREATE TABLE address (
+    cidade VARCHAR(100),
+    estado VARCHAR(100),
+    rua VARCHAR(100),
+    numero INTEGER,
+    "id" SERIAL PRIMARY KEY,
+    cep VARCHAR(9),
+    bairro VARCHAR(100)
+);
+
+CREATE TABLE request (
+    "id" SERIAL PRIMARY KEY,
+    total_price FLOAT,
+    bought_at TIMESTAMP,
+    fk_client_id INTEGER
+);
+ 
+ALTER TABLE client ADD CONSTRAINT FK_client_2
+    FOREIGN KEY (fk_address_id)
+    REFERENCES address ("id")
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE product ADD CONSTRAINT FK_product_2
+    FOREIGN KEY (fk_category_id)
+    REFERENCES category ("id")
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE shopping_cart ADD CONSTRAINT FK_shopping_cart_2
+    FOREIGN KEY (fk_client_id)
+    REFERENCES client ("id")
+    ON DELETE CASCADE;
+ 
+ALTER TABLE shopping_cart ADD CONSTRAINT FK_shopping_cart_3
+    FOREIGN KEY (fk_product_id)
+    REFERENCES product ("id")
+    ON DELETE CASCADE;
+ 
+ALTER TABLE request ADD CONSTRAINT FK_request_2
+    FOREIGN KEY (fk_client_id)
+    REFERENCES client ("id")
+    ON DELETE RESTRICT;
