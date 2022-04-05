@@ -112,7 +112,8 @@
         <div class="user">
             <img src="images/user.png" alt="">
         </div>
-        <div class="shop" id="request-item"></div>
+        <div></div>
+        <div class="request-items" id="request-item"></div>
 
     </nav>
     <!-- requests section  fim -->
@@ -125,18 +126,18 @@
             <div class="shop" id="shop-container"></div>
             <div class="frete">
                 <div class="frete-cart" id="frete-cart">
-                    <span class="span" id="subtotal"></span>
+                    <input class="input" id="subtotal" disabled>
                     <br>
-                    <span class="span" id="frete"></span>
+                    <input class="input" id="frete" disabled>
                     <br>
-                    <span class="span" id="total"></span>
+                    <input class="input" id="total" disabled>
                 </div>
             </div>
             <div class="links">
                 <button><a id="address">Comprar</a></button>
                     <form action="http://localhost:5000/upload" method="post" enctype="multipart/form-data">
                         <input type="file" accept=".csv" name="meucsv" id="meucsv">
-                        <input type="submit" value="Buscar produtos da lista">
+                        <input type="submit" value="Inserir CSV">
                     </form>
             </div>
 
@@ -278,119 +279,7 @@
 
     </section>
     <!-- Seção de Produto fim -->
-    <!-- Seção Destaque inicio -->
-    <!-- <section class="featured" id="featured">
 
-        <h1 class="heading">Produtos em <span>Destaque</span></h1>
-
-        <div class="box-container">
-
-            <div class="box">
-                <div class="image-container">
-                    <div class="small-image">
-                        <img src="images/f-1-1.png" class="small-image-1" alt="">
-                        <img src="images/f-1-2.png" class="small-image-1" alt="">
-                        <img src="images/f-1-3.png" class="small-image-1" alt="">
-                    </div>
-                    <div class="big-image">
-                        <img src="images/f-1-1.png" class="big-image-1" alt="">
-                    </div>
-                </div>
-                <div class="content">
-                    <h3>Placa De Video Gigabyte Geforce Rtx 3080 Ti Eagle 12g - Gddr6x - 2x Hdmi/3x Displayport com LHR</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span>( 12100 reviews )</span>
-                    </div>
-                    <p>Placa de Vídeo Gigabyte NVIDIA GeForce RTX 3080 Ti Eeagle Sistema de resfriamento WINDFORCE 3X
-                        O sistema de resfriamento WINDFORCE 3X possui dois ventiladores de lâmina exclusivos de 90 mm e um de 80 mm,
-                        rotação alternada, 7 tubos de calor de cobre composto, uma grande placa de cobre que toca diretamente a GPU,
-                        ventiladores ativos 3D e resfriamento de tela, que juntos fornecem dissipação de calor de alta eficiência.
-                    </p>
-                    <div class="price">R$16599.99 <span>R$17599.99</span></div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image-container">
-                    <div class="small-image">
-                        <img src="images/f-2-1.png" class="small-image-2" alt="">
-                        <img src="images/f-2-2.png" class="small-image-2" alt="">
-                        <img src="images/f-2-3.png" class="small-image-2" alt="">
-                    </div>
-                    <div class="big-image">
-                        <img src="images/f-2-1.png" class="big-image-2" alt="">
-                    </div>
-                </div>
-                <div class="content">
-                    <h3>Placa De Vídeo Gigabyte Geforce RTX 2060 D6 6GB GDDR6 192bit</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>( 590 reviews )</span>
-                    </div>
-                    <p>Marca: Gigabyte - Modelo: GVN2060D66GD 20 Recursos - Powered by GeForce RTX™ 2060 -
-                        Integrado com interface de memória GDDR6 de 6 GB de 192 bits - Sistema de resfriamento WINDFORCE
-                        2X com ventiladores giratórios alternativos Ventiladores de - Lâmina exclusivos de 90 mm -
-                        Back plate de proteção Especificações Chipset GeForce RTX™ 2060 Core Clock 1680 MHz RTX-OPS 36 CUDA®
-                        Cores 1920 Memory Clock 14000 MHz Tamanho da memória 6 GB Tipo de memória GDDR6 Memory Bus 192 bit
-                        Banda de memória (GB/sec) 336 GB/s Card Bus PCI-E 3.0 x 16 Resolução digital max. 7680x4320 Multi-view 4
-                        Tamanho da placa Comprimento= 225.65 Largura= 122.02 Altura= 40.5 mm PCB Form ATX DirectX 12 OpenGL 4.6
-                        Fonte requerida 500W Conectores de energia 8 Pin*1 Saída DisplayPort 1.4 *3 HDMI 2.0b *1 SLI support
-                        No Accessórios 1. Quick guide 2. Driver CD
-                    </p>
-                    <div class="price">R$4111.99 <span>R$4899.99</span></div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image-container">
-                    <div class="small-image">
-                        <img src="images/f-3-1.png" class="small-image-3" alt="">
-                        <img src="images/f-3-2.png" class="small-image-3" alt="">
-                        <img src="images/f-3-3.png" class="small-image-3" alt="">
-                    </div>
-                    <div class="big-image">
-                        <img src="images/f-3-1.png" class="big-image-3" alt="">
-                    </div>
-                </div>
-                <div class="content">
-                    <h3>Placa de Vídeo Gigabyte NVIDIA GeForce RTX 3080 Ti Gaming, RGB, 12GB GDDR6X, 19000MHz, DLSS, Ray Tracing - GV-N308TGAMING OC-12GD</h3>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span>( 1440 reviews )</span>
-                    </div>
-                    <p>Placa de Vídeo Gigabyte NVIDIA GeForce RTX 3080 Ti Gaming Sistema de resfriamento WINDFORCE 3X
-                        O sistema de resfriamento WINDFORCE 3X possui dois ventiladores de lâmina exclusivos de 90 mm e um de 80 mm,
-                        rotação alternada, 7 tubos de calor de cobre composto, uma grande placa de cobre que toca diretamente a GPU,
-                        ventiladores ativos 3D e resfriamento de tela, que juntos fornecem dissipação de calor de alta eficiência.
-                        A GIGABYTE gira os ventiladores adjacentes na direção oposta, de forma que a direção do fluxo de ar entre os dois ventiladores seja a mesma,
-                        reduzindo a turbulência e aumentando a pressão do fluxo de ar. O 3D Active Fan fornece resfriamento semipassivo, e
-                        os ventiladores permanecerão desligados quando a GPU estiver em um jogo de baixa carga ou baixo consumo de energia.
-                    </p>
-                    <div class="price">R$13599.99 <span>R$14159.99</span></div>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-        </div>
-
-    </section> -->
-
-    <!-- Seção Destaque fim -->
     <!-- footer section inicio  -->
 
     <section class="footer">
@@ -444,8 +333,10 @@
                                     </div>
                                     <h3 id="name-${index+1}">${item.name}</h3>
                                     <div class="price" id="price-${index+1}">R$ ${item.price} <span> R$ ${item.discount}</span></div>
-                                    <a href="#" class="btn" onclick="addToCart(${item.id})">Add Item</a>
-                                    <a class="btn" onclick="openModal(${item.id})">Detalhes</a>
+                                    <div class="button">
+                                        <a href="#" class="btn" onclick="addToCart(${item.id})">Add Item</a>
+                                        <a class="btn" onclick="openModal(${item.id})">Detalhes</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -512,7 +403,7 @@
                         <p class="span" id="product-name-cart">${item.name}</p>
                         <br>
                         <br>
-                        <p class="span" id="product-price-cart">Valor: ${item.price}R$</p>
+                        <p class="span" id="product-price-cart">Valor: R$${item.price}</p>
                         <p id="delete" class="fas fa-times" onclick="deleteCartItem(${item.id})"></p>
                     </div>
                 </div>
@@ -523,13 +414,11 @@
             for(let i = 0; i < response.data.length; i++) {
                 valor += response.data[i].price;
             }
+            console.log("TO AQUI")
         let total = valor + frete
-        document.getElementById('subtotal').innerHTML = `SubTotal: ${valor}R$`;
-        document.getElementById('frete').innerHTML = `Frete: ${frete}R$`;
-        document.getElementById('total').innerHTML = `Total: ${total}R$`;
-
-        let total_price = document.getElementById('total').value
-        console.log(total_price)
+        document.getElementById('subtotal').value = `SubTotal: R$${valor.toFixed(2)}`;
+        document.getElementById('frete').value = `Frete: R$${frete}`;
+        document.getElementById('total').value = `Total: R$${total.toFixed(2)}`;
     })
     .catch(error => console.log(error))
 
@@ -557,7 +446,7 @@
     .then(response => {
         document.querySelector('#request-item').innerHTML =  response.data.map((item) => `
             <div class="show-request">
-                <h2>Pedido de número ${item.id} realizado: ${item.bought_at} no valor de ${item.total_price}R$</h2>
+                <h2>Pedido de número ${item.id} realizado: ${item.bought_at} no valor de R$${item.total_price}</h2>
             </div>
             `)
     })

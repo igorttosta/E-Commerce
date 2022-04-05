@@ -73,7 +73,7 @@ section{
     background: var(--black-color);
     color:var(--white-color);
     font-size: 1.8rem;
-    padding:.9rem 3.5rem;
+    padding:.5rem 2.5rem;
     cursor: pointer;
 }
 
@@ -474,7 +474,21 @@ header.active{
     object-fit: cover;
     box-shadow: 5rem 2rem 0 -3rem var(--orange),
                 -5rem -2rem 0 -3rem var(--orange);
-    margin-bottom: 4rem;
+}
+
+.requests .request-items{
+    height: 60%;
+    width: 100%;
+    border: 0.1rem solid var(--black-color);
+    padding: 1rem;
+    color: var(--black-color);
+    overflow-y: scroll;
+    text-align: center;
+}
+
+.requests .show-request {
+    border-bottom: 0.1rem solid var(--black-color);
+    padding: 0.5rem;
 }
 
 .requests #sairr{
@@ -537,7 +551,7 @@ header.active{
     overflow-y:scroll;
     border: thin var(--black-color) solid;
     margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 .shopping .shop .shop-cart {
@@ -593,7 +607,12 @@ header.active{
     border: 1px solid var(--black-color);
     padding: 1rem;
     border-radius: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.shopping .frete .frete-cart input {
+    background: none;
+    color:var(--black-color);
 }
 
 .shopping .frete .frete-cart .span {

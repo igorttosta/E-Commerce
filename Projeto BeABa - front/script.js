@@ -269,7 +269,6 @@ function auth(email, password){
 
 window.addEventListener('load', (event) => {
     user = JSON.parse(localStorage.getItem('user'));
-    console.log("a pagina foi carregada")
     let userId = {
         "fk_client_id": user.id
     }
@@ -307,7 +306,10 @@ function deleteCartItem(id){
 function deleteAll(){
     user = JSON.parse(localStorage.getItem('user'));
     user_id = user.id
-    let total_price = 10;
+
+    let total_price = document.getElementById('total').value
+    total_price = total_price.substring(total_price.indexOf('$')+1, total_price.length)
+    total_price = parseFloat(total_price)
 
     let request = {
         "total_price": total_price,
