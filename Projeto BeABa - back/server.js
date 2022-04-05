@@ -66,7 +66,6 @@ app.get("/shopping_cart_verify/:id_user", async (req, res) => {
 })
 async function addProductToCart(clientId, productId) {
     const cartId = await genereteCartId();
-    // const { fk_client_id,  fk_product_id } = req.body;
 
     let retorno =  await pool.query("Insert into shopping_cart values ($1, $2, $3) returning *", [cartId, clientId,  productId]);
     return retorno.rows[0]
@@ -74,11 +73,8 @@ async function addProductToCart(clientId, productId) {
 //Create
 app.post("/shopping_cart", async (req, res) => {
     try {
-        // const id = await genereteCartId();
         const { fk_client_id,  fk_product_id } = req.body;
 
-        // const newShoppingCart = await pool.query("Insert into shopping_cart values ($1, $2, $3) returning *", [id, fk_client_id,  fk_product_id]);
-        // const newShoppingCart = addProductToCart(fk_client_id,  fk_product_id)
         await addProductToCart(fk_client_id, fk_product_id);
 
         res.json("ff");
@@ -147,19 +143,6 @@ app.get("/address/:address_user", async (req, res) => {
         console.error(err.message)
     }
 })
-// //Update item
-// app.put("/address/:id", async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const { cidade, estado, rua, numero, cep, bairro } = req.body;
-
-//         const updateAddress = await pool.query("update address set cidade = $1, estado = $2, rua = $3, numero = $4, cep = $5, bairro = $6 where id = $7", [cidade, estado, rua, numero, cep, bairro, id]);
-
-//         res.json("Address atualizado!!");
-//     } catch (err) {
-//         console.error(err.message)
-//     }
-// })
 //--------------------------------------------------- Final Address -----------------------------------------------//
 
 //--------------------------------------------------- Inicio Client -----------------------------------------------//
@@ -277,21 +260,6 @@ app.post("/verify", async (req, res) => {
     try {
         const verify = await pool.query("select * from client where email = $1 or cpf = $2", [email, cpf]);
         res.json(verify.rows[0]);
-    } catch (err) {
-        console.error(err.message)
-    }
-})
-
-app.post("/uploadCSV", async (req, res) => {
-    console.log("req", req.body)
-    // user_id = req.body.fk_client_id
-    try {
-        // const id = await genereteCartId();
-        // const { fk_client_id } = req.body;
-        //     let fk_product_id = arr[i]
-        //     const newShoppingCart = await pool.query("Insert into shopping_cart values ($1, $2, $3) returning *", [id, fk_client_id,  fk_product_id]);
-        //     res.json(newShoppingCart.rows[0]);
-
     } catch (err) {
         console.error(err.message)
     }
